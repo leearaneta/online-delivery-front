@@ -5,7 +5,7 @@ class UserNew extends Component {
   render() {
     return (
       <div>
-        <SignInFormContainer {...this.props}/>
+        <SignInFormContainer />
       </div>
     )
   }
