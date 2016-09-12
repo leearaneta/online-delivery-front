@@ -11,8 +11,11 @@ export default class Landing extends Component {
 
     return (
       <div id="hel">
+        <h1>The Delivery Team</h1>
+        <h2 class="subheader">Who Deliverys in Your Neighborhood?</h2>
+        <br />
         <Geosuggest
-          placeholder="Where do you want it delivered?"
+          placeholder="Street Address, City, Sta.."
           onSuggestSelect={this.onSuggestSelect}
           location={new google.maps.LatLng(62.2315, 16.1932)}
           country="SE"
