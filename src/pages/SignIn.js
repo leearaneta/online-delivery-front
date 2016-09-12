@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import SignInFormContainer from '../containers/SignInFormContainer.js';
+import SignInContainer from '../containers/SignInContainer.js';
 
 class UserNew extends Component {
   render() {
     return (
       <div>
-        <SignInFormContainer />
+        <SignInContainer />
       </div>
     )
   }

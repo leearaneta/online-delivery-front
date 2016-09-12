@@ -6,8 +6,8 @@ export const VALIDATE_USER_FIELDS_SUCCESS = 'VALIDATE_USER_FIELDS_SUCCESS';
 export const VALIDATE_USER_FIELDS_FAILURE = 'VALIDATE_USER_FIELDS_FAILURE';
 export const RESET_VALIDATE_USER_FIELDS = 'RESET_VALIDATE_USER_FIELDS';
 
-ROOT_URL = globalConfig.API
-HEADER = globalConfig.header
+const ROOT_URL = globalConfig.API
+const HEADER = globalConfig.header
 
 export function validateUserFields(values) {
   const request = axios.post(`${ROOT_URL}/users/validate/fields`,

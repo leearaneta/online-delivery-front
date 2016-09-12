@@ -21,8 +21,8 @@ export const UPDATE_USER_ACCOUNT = 'UPDATE_USER_ACCOUNT';
 
 export const LOGOUT_USER = 'LOGOUT_USER';
 
-ROOT_URL = globalConfig.API
-HEADER = globalConfig.header
+const ROOT_URL = globalConfig.API
+const HEADER = globalConfig.header
 
 
 export function getUserData(userId){
@@ -55,13 +55,11 @@ export function meFromTokenFailure(error) {
   };
 }
 
-
 export function resetToken() {
   return {
     type: RESET_TOKEN
   };
 }
-
 
 export function signUpUser(formValues) {
   const request = axios.post(`${ROOT_URL}/users`, {user: formValues});
