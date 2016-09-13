@@ -1,6 +1,6 @@
 Front-End
-1. set up landing page
-2. 
+1. restaurants selection page
+2. restaurant individual page/menu
 
 
 
