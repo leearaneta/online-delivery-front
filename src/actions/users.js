@@ -21,9 +21,19 @@ export const UPDATE_USER_ACCOUNT = 'UPDATE_USER_ACCOUNT';
 
 export const LOGOUT_USER = 'LOGOUT_USER';
 
+export const CHECK_DELIVERY_ZONE = 'CHECK_DELIVERY_ZONE'
+
 const ROOT_URL = globalConfig.API
 const HEADER = globalConfig.header
 
+export function checkDeliveryZone(addressValues) {
+  var address = addressValues.gmaps.formatted_address
+  const request = axios.post(`${ROOT_URL}/users/check_delivery_zone`, {address: address});
+  return {
+    type: CHECK_DELIVERY_ZONE,
+    payload: request
+  };
+}
 
 export function getUserData(userId){
   const request = axios.get(`${ROOT_URL}/users/${userId}`,HEADER)

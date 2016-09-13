@@ -3,15 +3,23 @@ import {
   ME_FROM_TOKEN, ME_FROM_TOKEN_SUCCESS, ME_FROM_TOKEN_FAILURE, RESET_TOKEN,
 	SIGNUP_USER, SIGNUP_USER_SUCCESS, SIGNUP_USER_FAILURE, RESET_USER,
 	SIGNIN_USER, SIGNIN_USER_SUCCESS,  SIGNIN_USER_FAILURE,
-	LOGOUT_USER, UPDATE_USER_ACCOUNT, GET_USER_DATA
+	LOGOUT_USER, UPDATE_USER_ACCOUNT, GET_USER_DATA, CHECK_DELIVERY_ZONE
 } from '../actions/users';
 
-const INITIAL_STATE = {user: null, status:null, error:null, loading: false};
+const INITIAL_STATE = {user: null, address: null, status:null, error:null, loading: false};
 
 export default function(state = INITIAL_STATE, action) {
   let error;
 
   switch(action.type) {
+
+    case CHECK_DELIVERY_ZONE:
+    return { ...state, 
+        user: null, 
+        address: action.payload.data,
+        status: null, 
+        error: null, 
+        loading: false};
   
     case GET_USER_DATA:
     return { ...state, 

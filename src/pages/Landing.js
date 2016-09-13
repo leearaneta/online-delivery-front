@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import Geosuggest from 'react-geosuggest';
+import { connect } from 'react-redux';
+import {checkDeliveryZone} from '../actions/users'
 
-export default class Landing extends Component {
-
-	 onSuggestSelect(suggest) {
-    console.log(suggest);
-  }
+class Landing extends Component {
     
 	render(){
-
+    const {checkDeliveryZone} = this.props
     return (
-      <div id="hel">
+      <div id="container">
         <h1>The Delivery Team</h1>
-        <h2 class="subheader">Who Deliverys in Your Neighborhood?</h2>
-        <br />
+        <h2 className="subheader">Who Delivers in Your Neighborhood?</h2>
         <Geosuggest
-          placeholder="Street Address, City, Sta.."
-          onSuggestSelect={this.onSuggestSelect}
+          placeholder="Street Address, City, Country"
+          onSuggestSelect={checkDeliveryZone}
           location={new google.maps.LatLng(62.2315, 16.1932)}
           country="SE"
           radius="1000" />
@@ -24,3 +21,28 @@ export default class Landing extends Component {
     )
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+     checkDeliveryZone: (address) => {
+        dispatch(checkDeliveryZone(address))
+          .then((response) => {
+            if (!response.error) {
+              debugger
+              sessionStorage.setItem('jwtToken', response.payload.config.headers.Authorization);
+              // dispatch(meFromTokenSuccess(response.payload))
+              resolve()
+            } else {
+              debugger
+              sessionStorage.removeItem('jwtToken');
+              // dispatch(meFromTokenFailure(response.payload));
+              reject(data)
+            }
+          })
+        }
+     }
+  }
+
+export default connect(null, mapDispatchToProps)(Landing);
+
+
