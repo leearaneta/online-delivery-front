@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Geosuggest from 'react-geosuggest';
 import { connect } from 'react-redux';
 import {checkDeliveryZone} from '../actions/users'
+import { browserHistory } from 'react-router'
 
 class Landing extends Component {
     
@@ -24,24 +25,13 @@ class Landing extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-     checkDeliveryZone: (address) => {
-        dispatch(checkDeliveryZone(address))
-          .then((response) => {
-            if (!response.error) {
-              debugger
-              sessionStorage.setItem('jwtToken', response.payload.config.headers.Authorization);
-              // dispatch(meFromTokenSuccess(response.payload))
-              resolve()
-            } else {
-              debugger
-              sessionStorage.removeItem('jwtToken');
-              // dispatch(meFromTokenFailure(response.payload));
-              reject(data)
-            }
-          })
-        }
-     }
+    checkDeliveryZone: (address) => {
+      dispatch(checkDeliveryZone(address)).then (() =>
+        browserHistory.push('/restaurants')
+      )
+    }
   }
+}
 
 export default connect(null, mapDispatchToProps)(Landing);
 

@@ -6,7 +6,7 @@ import {
 	LOGOUT_USER, UPDATE_USER_ACCOUNT, GET_USER_DATA, CHECK_DELIVERY_ZONE
 } from '../actions/users';
 
-const INITIAL_STATE = {user: null, address: null, status:null, error:null, loading: false};
+const INITIAL_STATE = {user: null, restaurants: [], status:null, error:null, loading: false};
 
 export default function(state = INITIAL_STATE, action) {
   let error;
@@ -16,7 +16,7 @@ export default function(state = INITIAL_STATE, action) {
     case CHECK_DELIVERY_ZONE:
     return { ...state, 
         user: null, 
-        address: action.payload.data,
+        restaurants: action.payload.data.restaurants,
         status: null, 
         error: null, 
         loading: false};

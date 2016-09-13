@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import SignUpContainer from '../containers/SignUpContainer.js';
 
-class UserNew extends Component {
+export default class SignUp extends Component {
   render() {
     return (
-      <div>
-        <SignUpContainer />
-      </div>
-    );
+      <SignUpContainer />
+    )
   }
 }
-
-export default UserNew;
