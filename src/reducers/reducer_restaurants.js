@@ -2,7 +2,7 @@ import {
   CHECK_DELIVERY_ZONE
 } from '../actions/restaurants';
 
-const INITIAL_STATE = {restaurants: [], status:null, error:null, loading: false};
+const INITIAL_STATE = {restaurants: [], activeRestaurant: {}, activeCourse: '', status: null, error: null, loading: false};
 
 export default function(state = INITIAL_STATE, action) {
   let error;
@@ -10,10 +10,10 @@ export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
 
     case CHECK_DELIVERY_ZONE:
-    return { ...state,  
+    return { ...state,
       restaurants: action.payload.data,
-      status: null, 
-      error: null, 
+      status: null,
+      error: null,
       loading: false};
 
     default:
