@@ -28,7 +28,7 @@ const HEADER = globalConfig.header
 
 export function checkDeliveryZone(addressValues) {
   var address = addressValues.gmaps.formatted_address
-  const request = axios.post(`${ROOT_URL}/users/check_delivery_zone`, {address: address});
+  const request = axios.post(`${ROOT_URL}/check_delivery_zone`, {address: address});
   return {
     type: CHECK_DELIVERY_ZONE,
     payload: request

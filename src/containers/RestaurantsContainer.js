@@ -17,7 +17,6 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(fetchRestaurant())
     },
     renderRestaurants: (restaurants) => {
-    	debugger
     	return restaurants.map((restaurant) => {
 	      return (
 	        <li className="list-group-item" key={restaurant.id}>

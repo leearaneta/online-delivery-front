@@ -17,11 +17,11 @@ export default class RestaurantsList extends Component {
     } else {
       return (
         <div id="container">
-          <h2 className="subheader">Oh noooooo! Looks like we aren't yet in your Neighborhood!</h2>
+          <h2 className="subheader">Oh noooooo! Looks like we arent yet in your Neighborhood!</h2>
           <h4><Link to={'/'}>Click Here if you would like to try a different address!</Link></h4>
         </div>
       )
     }
-    
+
   }
 }
