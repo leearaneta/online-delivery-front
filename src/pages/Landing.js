@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Geosuggest from 'react-geosuggest';
 import { connect } from 'react-redux';
-import {checkDeliveryZone} from '../actions/users'
+import {checkDeliveryZone} from '../actions/restaurants'
 import { browserHistory } from 'react-router'
 
 class Landing extends Component {
