@@ -12,129 +12,129 @@ export default function(state = INITIAL_STATE, action) {
   let error;
 
   switch(action.type) {
-  
+
     case GET_USER_DATA:
-    return { ...state, 
-        user: action.payload.data, 
-        status:'authenticated', 
-        error:null, 
+    return { ...state,
+        user: action.payload.data,
+        status:'authenticated',
+        error:null,
         loading: false};
 
     case VALIDATE_EMAIL:
-    return { ...state, 
-        user: null, 
-        status:'validate_email', 
-        error:null, 
+    return { ...state,
+        user: null,
+        status:'validate_email',
+        error:null,
         loading: true};
 
     case VALIDATE_EMAIL_SUCCESS:
-    return { ...state, 
-        user: action.payload.data.user, 
-        status:'authenticated', 
-        error:null, 
-        loading: false}; 
+    return { ...state,
+        user: action.payload.data.user,
+        status:'authenticated',
+        error:null,
+        loading: false};
 
     case VALIDATE_EMAIL_FAILURE:
     error = action.payload.data || {message: action.payload.message};
-    return { ...state, 
-        user:null, 
-        status:'validate_email', 
-        error:error, 
-        loading: false}; 
+    return { ...state,
+        user:null,
+        status:'validate_email',
+        error:error,
+        loading: false};
 
     case ME_FROM_TOKEN:
-    return { ...state, 
-        user: null, 
-        status:'storage', 
-        error:null, 
+    return { ...state,
+        user: null,
+        status:'storage',
+        error:null,
         loading: true};
 
     case ME_FROM_TOKEN_SUCCESS:
-    return { ...state, 
-        user: action.payload.data, 
-        status:'authenticated', 
-        error:null, 
-        loading: false}; 
-    
+    return { ...state,
+        user: action.payload.data,
+        status:'authenticated',
+        error:null,
+        loading: false};
+
     case ME_FROM_TOKEN_FAILURE:
     error = action.payload.data || {message: action.payload.message};
-    return { ...state, 
-        user: null, 
-        status:'storage', 
-        error:error, 
+    return { ...state,
+        user: null,
+        status:'storage',
+        error:error,
         loading: false};
-    
+
     case RESET_TOKEN:
-    return { ...state, 
-        user: null, 
-        status:'storage', 
-        error:null, 
+    return { ...state,
+        user: null,
+        status:'storage',
+        error:null,
         loading: false};
 
     case SIGNUP_USER:
-    return { ...state, 
-        user: null, 
-        status:'signup', 
-        error:null, 
+    return { ...state,
+        user: null,
+        status:'signup',
+        error:null,
         loading: true};
-    
+
     case SIGNUP_USER_SUCCESS:
-    return { ...state, 
-        user: action.payload, 
-        status:'authenticated', 
-        error:null, 
-        loading: false}; 
-    
+    return { ...state,
+        user: action.payload,
+        status:'authenticated',
+        error:null,
+        loading: false};
+
     case SIGNUP_USER_FAILURE:
     error = action.payload.data || {message: action.payload.message};
-    return { ...state, 
-        user: null, 
-        status: 'signup', 
-        error: error, 
+    return { ...state,
+        user: null,
+        status: 'signup',
+        error: error,
         loading: false};
 
     case SIGNIN_USER:
-    return { ...state, 
-        user: null, 
-        status: 'signin', 
-        error: null, 
+    return { ...state,
+        user: null,
+        status: 'signin',
+        error: null,
         loading: true};
-    
+
     case SIGNIN_USER_SUCCESS:
-    return { ...state, 
-        user: action.payload.data, 
-        status: 'authenticated', 
-        error: null, 
-        loading: false}; 
-    
-    case SIGNIN_USER_FAILURE:
-    error = action.payload.data || {message: action.payload.message};
-    return { ...state, 
-        user: null, 
-        status: 'signin', 
-        error: error, 
+    return { ...state,
+        user: action.payload.data,
+        status: 'authenticated',
+        error: null,
         loading: false};
 
-    // this doesn't feel right 
+    case SIGNIN_USER_FAILURE:
+    error = action.payload.data || {message: action.payload.message};
+    return { ...state,
+        user: null,
+        status: 'signin',
+        error: error,
+        loading: false};
+
+    // this doesn't feel right
     case UPDATE_USER_ACCOUNT:
-    return {...state, 
-        user: {...state.user, 
-            email: action.payload.email, 
+    return {...state,
+        user: {...state.user,
+            email: action.payload.email,
             zipcode: action.payload.zipcode}
         };
 
     case LOGOUT_USER:
-      return {...state, 
-        user: null, 
-        status: 'logout', 
-        error: null, 
+      return {...state,
+        user: null,
+        status: 'logout',
+        error: null,
         loading: false};
 
     case RESET_USER:
-    return { ...state, 
-        user: null, 
-        status: null, 
-        error: null, 
+    return { ...state,
+        user: null,
+        status: null,
+        error: null,
         loading: false};
 
     default:
