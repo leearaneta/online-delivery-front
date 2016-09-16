@@ -4,13 +4,13 @@ import { Link } from 'react-router';
 export default class RestaurantsList extends Component {
 
   render() {
-    const { renderRestaurants, restaurants } = this.props;
-    if(restaurants.length > 0) {
+    const { renderRestaurants, restaurantsList } = this.props;
+    if(restaurantsList.length > 0) {
       return (
         <div className="container" >
           <h1>Take Your Pick!</h1>
           <ul className="list-group">
-            {renderRestaurants(restaurants)}
+            {renderRestaurants(restaurantsList)}
           </ul>
         </div>
       );

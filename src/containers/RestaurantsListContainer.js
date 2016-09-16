@@ -6,8 +6,9 @@ import RestaurantsList from '../components/RestaurantsList';
 import RestaurantBox from '../components/RestaurantBox';
 
 const mapStateToProps = (state) => {
+  debugger
   return {
-    restaurants: state.restaurants
+    restaurantsList: state.restaurants.restaurantsList
   };
 }
 
