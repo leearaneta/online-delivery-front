@@ -6,7 +6,6 @@ import RestaurantsList from '../components/RestaurantsList';
 import RestaurantBox from '../components/RestaurantBox';
 
 const mapStateToProps = (state) => {
-  debugger
   return {
     restaurantsList: state.restaurants.restaurantsList
   };
@@ -19,7 +18,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     renderRestaurants: (restaurants) => {
     	return restaurants.map((restaurant) => {
-        debugger
 	      return (
 	        <li className="list-group-item" key={restaurant.id}>
 	          <RestaurantBox {...restaurant} />
