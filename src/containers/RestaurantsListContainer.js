@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
     renderRestaurants: (restaurants) => {
     	return restaurants.map((restaurant) => {
 	      return (
-	        <li className="list-group-item" key={restaurant.id}>
+	        <li className="restaurant-box" key={restaurant.id}>
 	          <RestaurantBox {...restaurant} />
 	        </li>
 	      );
