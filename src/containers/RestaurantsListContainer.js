@@ -13,9 +13,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchRestaurant: () => {
-      dispatch(fetchRestaurant())
-    },
     renderRestaurants: (restaurants) => {
     	return restaurants.map((restaurant) => {
 	      return (

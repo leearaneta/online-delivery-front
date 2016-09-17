@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
-import CategoriesContainer from '../containers/CategoriesContainer.js';
-import ItemsContainer from '../containers/ItemsContainer'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import CoursesContainer from '../containers/CoursesContainer.js';
+// import ItemsContainer from '../containers/ItemsContainer'
+import { fetchRestaurant } from '../actions/restaurants'
 
-export default class Restaurant extends Component {
+class Restaurant extends Component {
+
+  componentWillMount() {
+    var {params, fetchRestaurant} = this.props
+    fetchRestaurant(params.id)
+  }
+
   render() {
+
     return (
-      <CategoriesContainer />
-      <ItemsContainer />
+      <div>
+        <CoursesContainer />
+      </div>
     )
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({fetchRestaurant}, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(Restaurant);
