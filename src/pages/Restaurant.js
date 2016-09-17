@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import CoursesContainer from '../containers/CoursesContainer.js';
-// import ItemsContainer from '../containers/ItemsContainer'
+import CoursesContainer from '../containers/CoursesContainer';
+import ItemsContainer from '../containers/ItemsContainer'
 import { fetchRestaurant } from '../actions/restaurants'
 
 class Restaurant extends Component {
@@ -13,10 +13,10 @@ class Restaurant extends Component {
   }
 
   render() {
-
     return (
       <div>
         <CoursesContainer />
+        <ItemsContainer />
       </div>
     )
   }

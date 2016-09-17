@@ -3,7 +3,7 @@ import {
 } from '../actions/restaurants';
 
 const INITIAL_STATE = {restaurantsList: [],
-  restaurantsCategories: [], activeCategory: {category: null, activeRestaurantsList: [] }, 
+  restaurantsCategories: [], activeCategory: {category: null, activeRestaurantsList: [] },
   activeRestaurant: {restaurant: null, activeCourse: null},
   status:null, error:null, loading: false
 };
@@ -15,7 +15,7 @@ export default function(state = INITIAL_STATE, action) {
     case CHECK_DELIVERY_ZONE:
       return { ...state,
         restaurantsList: action.payload.data,
-        restaurantsCategories: [].concat(...action.payload.data.map (restaurant => { 
+        restaurantsCategories: [].concat(...action.payload.data.map (restaurant => {
           return restaurant.categories })),
         status: null,
         error: null,
