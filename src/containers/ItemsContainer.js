@@ -13,9 +13,10 @@ class ItemsContainer extends Component {
   render() {
     var { activeRestaurant } = this.props
     if (activeRestaurant.activeCourse) {
+      var courseObject = activeRestaurant.restaurant.courses.find(course => course.name === activeRestaurant.activeCourse)
+      var courseId = courseObject.id
       var relevantItems = activeRestaurant.restaurant.items.filter(item => {
-        debugger
-        return item.course_id === activeRestaurant.activeCourse
+        return item.course_id === courseId
       })
       return <div>{relevantItems.map(item => <Item {...item} onClick={this.handleClick.bind(this)}/>)}</div>
     }

@@ -10,7 +10,6 @@ class CoursesContainer extends Component {
   handleClick(event) {
     event.preventDefault()
     var course = event.target.dataset.course
-    debugger
     this.props.changeActiveCourse(course)
   }
 
