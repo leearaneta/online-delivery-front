@@ -18,9 +18,9 @@ class CoursesContainer extends Component {
   render() {
     if (this.props.activeRestaurant.restaurant) {
       return (
-        <ul>{this.props.activeRestaurant.restaurant.courses.map(course => {
-          return <li><Course name={course.name} onClick={this.handleClick.bind(this)} /></li>
-        })}</ul>
+        <div>{this.props.activeRestaurant.restaurant.courses.map(course => {
+          return <Course name={course.name} onClick={this.handleClick.bind(this)} />
+        })}</div>
       )
     } else {
       return <h2>Loading...</h2>
