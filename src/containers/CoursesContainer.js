@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router';
 import Course from '../components/Course'
-import RestaurantsList from '../components/RestaurantsList';
-import RestaurantBox from '../components/RestaurantBox';
 import { changeActiveCourse } from '../actions/restaurants'
 
 class CoursesContainer extends Component {

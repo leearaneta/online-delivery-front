@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     checkDeliveryZone: (address) => {
       dispatch(checkDeliveryZone(address)).then (() =>
-        browserHistory.push('/restaurants')
+        browserHistory.push('/categories')
       )
     }
   }

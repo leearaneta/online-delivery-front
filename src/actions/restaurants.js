@@ -4,6 +4,8 @@ import globalConfig from './index.js'
 export const CHECK_DELIVERY_ZONE = 'CHECK_DELIVERY_ZONE'
 export const FETCH_RESTAURANT = 'FETCH_RESTAURANT'
 export const CHANGE_ACTIVE_COURSE = 'CHANGE_ACTIVE_COURSE'
+export const CHANGE_ACTIVE_CATEGORY = 'CHANGE_ACTIVE_CATEGORY'
+
 
 const ROOT_URL = globalConfig.API
 const HEADER = globalConfig.header
@@ -29,5 +31,12 @@ export function changeActiveCourse(course) {
   return {
     type: CHANGE_ACTIVE_COURSE,
     payload: course
+  }
+}
+
+export function changeActiveCategory(activeCategory,activeRestaurants) {
+  return {
+    type: CHANGE_ACTIVE_CATEGORY,
+    payload: {activeCategory,activeRestaurants}
   }
 }

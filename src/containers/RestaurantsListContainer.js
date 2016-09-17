@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-
 import RestaurantsList from '../components/RestaurantsList';
 import RestaurantBox from '../components/RestaurantBox';
 
 const mapStateToProps = (state) => {
   return {
-    restaurantsList: state.restaurants.restaurantsList
+    restaurantsList: state.restaurants.activeCategory.activeRestaurantsList
   };
 }
 
