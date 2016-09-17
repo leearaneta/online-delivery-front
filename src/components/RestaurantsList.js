@@ -9,7 +9,7 @@ export default class RestaurantsList extends Component {
       return (
         <div className="container" >
           <h1>Take Your Pick!</h1>
-          <ul className="list-group">
+          <ul className="restaurantslist">
             {renderRestaurants(restaurantsList)}
           </ul>
         </div>
