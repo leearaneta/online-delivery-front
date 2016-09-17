@@ -10,7 +10,7 @@ const ROOT_URL = globalConfig.API
 
 export function updateAccount(props, tokenFromStorage) {
 const request = axios.post(`${ROOT_URL}/users/edit`,
-    props, {headers:{Authorization: tokenFromStorage }})
+    props, {headers: { Authorization: tokenFromStorage }})
 
   return {
     type: UPDATE_ACCOUNT,
