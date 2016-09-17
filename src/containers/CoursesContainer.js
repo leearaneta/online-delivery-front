@@ -9,9 +9,10 @@ import { changeActiveCourse } from '../actions/restaurants'
 
 class CoursesContainer extends Component {
 
-  handleClick() {
+  handleClick(event) {
     event.preventDefault()
     var course = event.target.dataset.course
+    debugger
     this.props.changeActiveCourse(course)
   }
 
@@ -19,12 +20,11 @@ class CoursesContainer extends Component {
     if (this.props.activeRestaurant.restaurant) {
       return (
         <div>{this.props.activeRestaurant.restaurant.courses.map(course => {
-          return <Course name={course.name} onClick={this.handleClick.bind(this)} />
+          return <Course {...course} onClick={this.handleClick.bind(this)} />
         })}</div>
       )
-    } else {
-      return <h2>Loading...</h2>
     }
+    return <h2>Loading...</h2>
   }
 }
 

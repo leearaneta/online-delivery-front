@@ -30,7 +30,7 @@ const FIELDS = {
 function validate(values) {
   var errors = {};
   var hasErrors = false
-  
+
   _.each(FIELDS, (type, field) => {
     if (!values[field]) {
       errors[field] = `Enter ${field.split("_")}`;
@@ -43,7 +43,7 @@ function validate(values) {
     hasErrors = true;
   }
 
-  return hasErros && errors;
+  return hasErrors && errors;
 }
 
 const asyncValidate = (values, dispatch) => {
@@ -53,9 +53,9 @@ const asyncValidate = (values, dispatch) => {
         let data = response.payload.data;
         if(response.payload.status !== 200) {
           dispatch(validateUserFieldsFailure(response.payload.response.data.error));
-           reject(data); 
+           reject(data);
          } else {
-          dispatch(validateUserFieldsSuccess(response.payload)); 
+          dispatch(validateUserFieldsSuccess(response.payload));
           resolve();
         }
       });
@@ -70,10 +70,10 @@ const validateAndSignUpUser = (formValues, dispatch) => {
         let data = response.payload.data;
         if(response.payload.status !== 200) {
           dispatch(signUpUserFailure(response.payload));
-           reject(data); 
+           reject(data);
          } else {
           sessionStorage.setItem('jwtToken', data.auth_token);
-          dispatch(signUpUserSuccess(data.user)); 
+          dispatch(signUpUserSuccess(data.user));
           resolve();
         }
       });
@@ -90,16 +90,16 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 function mapStateToProps(state, ownProps) {
-  return { 
+  return {
     user: state.user,
     validateFields: state.validateFields
   };
 }
 
 export default reduxForm({
-  form: 'SignUpForm', 
-  fields:  _.keys(FIELDS), 
+  form: 'SignUpForm',
+  fields:  _.keys(FIELDS),
   asyncValidate,
   asyncBlurFields: ['email'],
-  validate 
+  validate
 }, mapStateToProps, mapDispatchToProps)(SignUpForm);
