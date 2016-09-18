@@ -5,7 +5,7 @@ import {
 const INITIAL_STATE = {restaurantsList: [],
   restaurantsCategories: [], activeCategory: {category: null, activeRestaurantsList: [] },
   activeRestaurant: {restaurant: null, activeCourse: null},
-  status:null, error:null, loading: false
+  status: null, error: null, loading: false
 };
 
 export default function(state = INITIAL_STATE, action) {

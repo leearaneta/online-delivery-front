@@ -6,17 +6,19 @@ import { addItem } from '../actions/cart'
 
 class ItemsContainer extends Component {
 
-  handleClick() {
+  handleClick(event) {
     event.preventDefault()
+    var { activeRestaurant, addItem } = this.props
+    var itemId = event.target.dataset.id
+    var item = activeRestaurant.restaurant.items.find(item => item.id === parseInt(itemId))
+    addItem(item)
   }
 
   render() {
-    var { activeRestaurant } = this.props
-    if (activeRestaurant.activeCourse) {
-      var courseObject = activeRestaurant.restaurant.courses.find(course => course.name === activeRestaurant.activeCourse)
-      var courseId = courseObject.id
-      var relevantItems = activeRestaurant.restaurant.items.filter(item => {
-        return item.course_id === courseId
+    var { restaurant, activeCourse } = this.props.activeRestaurant
+    if (activeCourse) {
+      var relevantItems = restaurant.items.filter(item => {
+        return item.course_id === activeCourse.id
       })
       return <div>{relevantItems.map(item => <Item {...item} onClick={this.handleClick.bind(this)}/>)}</div>
     }

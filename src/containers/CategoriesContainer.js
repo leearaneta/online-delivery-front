@@ -10,7 +10,7 @@ class CategoriesContainer extends Component {
 
   handleClick(event) {
     event.preventDefault()
-    const {changeActiveCategory,restaurantsCategories, restaurantsList} = this.props
+    const {changeActiveCategory, restaurantsCategories, restaurantsList} = this.props
 
     var category = _.find(restaurantsCategories,{name: event.target.dataset.course})
 
