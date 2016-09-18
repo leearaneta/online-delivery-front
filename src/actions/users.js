@@ -105,7 +105,7 @@ export function signInUser(formValues) {
 
 // what is user.data.auth_token here
 export function signInUserSuccess(user) {
-  debugger
+
   const request = axios.get(`${ROOT_URL}/users`,{
     headers: {Authorization: user.data.auth_token}
   })

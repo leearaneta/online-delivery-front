@@ -15,7 +15,7 @@ class SignInForm extends Component {
   }
 
   asyncForEmail(event) {
-    debugger
+
     return (
       <div className="help-block">
         {asyncValidating === 'username' ? 'validating..': ''}
@@ -39,7 +39,7 @@ class SignInForm extends Component {
   }
 
   render() {
-    const { handleSubmit, submitting} = this.props;
+    const { handleSubmit, submitting } = this.props;
 
     return (
       <form onSubmit={handleSubmit(props => this.onSubmit(props))} >

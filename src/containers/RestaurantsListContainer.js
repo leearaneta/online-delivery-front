@@ -7,7 +7,7 @@ import RestaurantBox from '../components/RestaurantBox';
 const mapStateToProps = (state) => {
   return {
     restaurantsList: state.restaurants.activeCategory.activeRestaurantsList
-  };
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -18,8 +18,8 @@ const mapDispatchToProps = (dispatch) => {
 	        <li className="restaurant-box" key={restaurant.id}>
 	          <RestaurantBox {...restaurant} />
 	        </li>
-	      );
-    	});
+	      )
+    	})
   	}
   }
 }
