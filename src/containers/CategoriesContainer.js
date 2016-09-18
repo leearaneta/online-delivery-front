@@ -32,8 +32,10 @@ class CategoriesContainer extends Component {
           return c.id;
         });
       return (
-        <ul>{filteredCategories.map(category => {
-          return <li><Category {...category} onClick={this.handleClick.bind(this)} /></li>
+        <ul className="category-list">{filteredCategories.map(category => {
+          return (<li className="category-list-item">
+            <Category {...category} onClick={this.handleClick.bind(this)} />
+          </li>)
         })}</ul>
       )
     } else {
