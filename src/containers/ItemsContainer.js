@@ -8,9 +8,13 @@ class ItemsContainer extends Component {
 
   handleClick(event) {
     event.preventDefault()
-    var { activeRestaurant, addItem } = this.props
-    var itemId = event.target.dataset.id
-    var item = activeRestaurant.restaurant.items.find(item => item.id === parseInt(itemId))
+    var { activeRestaurant, cart, addItem } = this.props
+    var itemId = parseInt(event.target.dataset.id)
+    if (cart.map(cartItem => cartItem.id).includes(itemId)) {
+      return null
+    }
+    var item = activeRestaurant.restaurant.items.find(item => item.id === itemId)
+    item.quantity = 1
     addItem(item)
   }
 
@@ -28,7 +32,7 @@ class ItemsContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    activeRestaurant: state.restaurants.activeRestaurant
+    activeRestaurant: state.restaurants.activeRestaurant, cart: state.cart
   }
 }
 

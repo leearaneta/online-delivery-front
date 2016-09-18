@@ -1,12 +1,21 @@
-import { ADD_ITEM } from '../actions/cart'
-
+import { ADD_ITEM, CHANGE_QUANTITY, REMOVE_ITEM  } from '../actions/cart'
 
 export default function(state = [], action) {
+  var newState, index
 
   switch(action.type) {
     case ADD_ITEM:
-      var newState = [].concat(state)
-      return newState.concat(action.payload)
+      return [...state, action.payload]
+    case CHANGE_QUANTITY:
+      newState = [].concat(state)
+      index = newState.indexOf(action.item)
+      newState[index].quantity = action.quantity
+      return newState
+    case REMOVE_ITEM:
+      newState = [].concat(state) // CODE IS REUSED, REFACTOR
+      index = newState.indexOf(action.payload)
+      newState.splice(index, 1)
+      return newState
     default:
       return state
   }

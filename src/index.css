@@ -151,7 +151,7 @@ h1 {
 }
 .geosuggest-item--active:hover,
 .geosuggest-item--active:focus {
-  background: #ccc; 
+  background: #ccc;
 }
 
 
@@ -184,4 +184,8 @@ h1 {
 .restaurant-box:hover,
 .restaurant-box:focus {
   background: #f5f5f5;
+}
+
+.numberInput {
+  width: 40px
 }
