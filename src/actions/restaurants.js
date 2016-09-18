@@ -6,7 +6,6 @@ export const FETCH_RESTAURANT = 'FETCH_RESTAURANT'
 export const CHANGE_ACTIVE_COURSE = 'CHANGE_ACTIVE_COURSE'
 export const CHANGE_ACTIVE_CATEGORY = 'CHANGE_ACTIVE_CATEGORY'
 
-
 const ROOT_URL = globalConfig.API
 const HEADER = globalConfig.header
 

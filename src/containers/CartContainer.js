@@ -42,9 +42,9 @@ class CartContainer extends Component {
 
     return (
       <div>
-        <CartHeader cart={cart}/>
+        <CartHeader cart={cart} />
         {cartItems}
-        <CartFooter total={total}/>
+        <CartFooter total={total} />
       </div>
     )
   }

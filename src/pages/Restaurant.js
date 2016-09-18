@@ -5,6 +5,7 @@ import CartContainer from '../containers/CartContainer'
 import CoursesContainer from '../containers/CoursesContainer';
 import ItemsContainer from '../containers/ItemsContainer'
 import { fetchRestaurant } from '../actions/restaurants'
+import { Link } from 'react-router'
 
 class Restaurant extends Component {
 
@@ -19,6 +20,7 @@ class Restaurant extends Component {
         <CartContainer />
         <CoursesContainer />
         <ItemsContainer />
+        <Link to='/checkout'>Checkout</Link>
       </div>
     )
   }
