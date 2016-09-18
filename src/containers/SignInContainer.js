@@ -1,31 +1,18 @@
 import SignInForm from '../components/SignInForm.js';
 import {signInUser, signInUserSuccess, signInUserFailure } from '../actions/users';
 import { reduxForm } from 'redux-form';
-import _ from 'lodash';
-
-const FIELDS = {
-  email: {
-    type: 'input',
-    label: 'Email'
-  },
-  password: {
-    type: 'password',
-    label: 'Password'
-  }
-};
-
 
 function validate(values) {
   var errors = {};
-  var hasErrors = false
-  
-  _.each(FIELDS, (type, field) => {
-    if (!values[field]) {
-      errors[field] = `Enter ${field.split("_")}`;
-      hasErrors = true;
-    }
-  });
-
+  var hasErrors = false;
+  if (!values.email || values.email.trim() === '') {
+    errors.email = 'Enter email';
+    hasErrors = true;
+  }
+  if(!values.password || values.password.trim() === '') {
+    errors.password = 'Enter password';
+    hasErrors = true;
+  }
    return hasErrors && errors;
 }
 
@@ -60,7 +47,7 @@ function mapStateToProps(state, ownProps) {
 
 export default reduxForm({
   form: 'SignInForm',
-  fields: _.keys(FIELDS),
+  fields: ['email', 'password'],
   null,
   null,
   validate

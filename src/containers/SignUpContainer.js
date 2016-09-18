@@ -1,50 +1,31 @@
 import SignUpForm from '../components/SignUpForm.js';
 import {signUpUser, signUpUserSuccess, signUpUserFailure } from '../actions/users';
 import { validateUserFields, validateUserFieldsSuccess, validateUserFieldsFailure, resetValidateUserFields } from '../actions/validateUserFields';
-import _ from 'lodash';
-import { reduxForm } from 'redux-form';
 
-const FIELDS = {
-  first_name: {
-    type: 'input',
-    label: 'First Name'
-  },
-  last_name: {
-    type: 'input',
-    label: 'Last Name'
-  },
-  email: {
-    type: 'input',
-    label: 'Email'
-  },
-  password: {
-    type: 'password',
-    label: 'Password'
-  },
-  confirm_password: {
-    type: 'password',
-    label: 'Confirm Password'
-  }
-};
+import { reduxForm } from 'redux-form';
 
 function validate(values) {
   var errors = {};
-  var hasErrors = false
+  var hasErrors = false;
 
-  _.each(FIELDS, (type, field) => {
-    if (!values[field]) {
-      errors[field] = `Enter ${field.split("_")}`;
-      hasErrors = true;
-    }
-  });
-
-  if(values.confirmPassword && values.password && values.password !== values.confirmPassword) {
-    errors.password = 'Password And Confirm Password don\'t match';
+  if (!values.first_name || values.first_name.trim() === '') {
+    errors.first_name = 'Enter your first name!';
     hasErrors = true;
   }
-
-  return hasErrors && errors;
-}
+  if (!values.last_name || values.name.trim() === '') {
+    errors.last_name = 'Enter your last name!';
+    hasErrors = true;
+  }
+  if(!values.email || values.email.trim() === '') {
+    errors.email = 'Enter your email!';
+    hasErrors = true;
+  }
+  if(!values.password || values.password.trim() === '') {
+    errors.password = 'Enter password';
+    hasErrors = true;
+  }
+   return hasErrors && errors;
+} 
 
 const asyncValidate = (values, dispatch) => {
   return new Promise((resolve, reject) => {
@@ -53,9 +34,9 @@ const asyncValidate = (values, dispatch) => {
         let data = response.payload.data;
         if(response.payload.status !== 200) {
           dispatch(validateUserFieldsFailure(response.payload.response.data.error));
-           reject(data);
+           reject(data); 
          } else {
-          dispatch(validateUserFieldsSuccess(response.payload));
+          dispatch(validateUserFieldsSuccess(response.payload)); 
           resolve();
         }
       });
@@ -70,10 +51,10 @@ const validateAndSignUpUser = (formValues, dispatch) => {
         let data = response.payload.data;
         if(response.payload.status !== 200) {
           dispatch(signUpUserFailure(response.payload));
-           reject(data);
+           reject(data); 
          } else {
           sessionStorage.setItem('jwtToken', data.auth_token);
-          dispatch(signUpUserSuccess(data.user));
+          dispatch(signUpUserSuccess(data.user)); 
           resolve();
         }
       });
@@ -90,16 +71,16 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 function mapStateToProps(state, ownProps) {
-  return {
+  return { 
     user: state.user,
     validateFields: state.validateFields
   };
 }
 
 export default reduxForm({
-  form: 'SignUpForm',
-  fields:  _.keys(FIELDS),
+  form: 'SignUpForm', 
+  fields: ['first_name','last_name', 'email', 'password'], 
   asyncValidate,
   asyncBlurFields: ['email'],
-  validate
+  validate 
 }, mapStateToProps, mapDispatchToProps)(SignUpForm);

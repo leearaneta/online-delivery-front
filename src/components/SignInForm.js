@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
-import { Link, browserHistory } from 'react-router';
-import _ from 'lodash';
+import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 
 class SignInForm extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  };
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.user.status === 'authenticated' && nextProps.user.user && !nextProps.user.error) {
-      browserHistory.push('/')
+      this.context.router.push('/dashboard');
     }
 
     if(nextProps.user.status === 'signin' && !nextProps.user.user && nextProps.user.error && !this.props.user.error) {
@@ -14,40 +16,38 @@ class SignInForm extends Component {
     }
   }
 
-  asyncForEmail(event) {
-
-    return (
-      <div className="help-block">
-        {asyncValidating === 'username' ? 'validating..': ''}
-      </div>
-    )
-  }
-
-  renderField(fieldConfig, field) {
-    const fieldHelper = this.props.fields[field];
-
-    return (
-      <div className={`form-group ${fieldHelper.touched && fieldHelper.invalid ? 'has-danger' : '' }`} >
-        <label>{fieldConfig.label}</label>
-        <fieldConfig.type type="text" className="form-control" {...fieldHelper} />
-        <div className="text-help">
-          {fieldHelper.touched ? fieldHelper.error : ''}
-        </div>
-        {this.asyncForEmail.bind(this)}
-      </div>
-    );
-  }
-
   render() {
-    const { handleSubmit, submitting } = this.props;
-
+    const {asyncValidating, fields: {email, password}, handleSubmit, submitting} = this.props;
     return (
-      <form onSubmit={handleSubmit(props => this.onSubmit(props))} >
-        <h3>Create A New Post</h3>
-        {_.map(FIELDS, this.renderField.bind(this))}
-        <button type="submit" className="btn btn-primary">Submit</button>
-        <Link to="/" className="btn btn-danger">Cancel</Link>
-      </form>
+      <div className="container">
+        <form onSubmit={handleSubmit(this.props.signInUser.bind(this))}>
+          <div className={`form-group ${email.touched && email.invalid ? 'has-error' : ''}`}>
+            <label className="control-label">Email</label>
+            <input  placeholder="email" type="text" className="form-control" {...email} />
+            <div className="help-block">
+              {email.touched ? email.error : ''}
+            </div>
+            <div className="help-block">
+            {asyncValidating === 'email' ? 'validating..': ''}
+            </div>
+          </div>
+
+
+          <div className={`form-group ${password.touched && password.invalid ? 'has-error' : ''}`}>
+            <label className="control-label">Password</label>
+            <input type="password" className="form-control" {...password} />
+            <div className="help-block">
+              {password.touched ? password.error : ''}
+            </div>
+          </div>
+          <button type="submit" className="btn btn-primary"  disabled={submitting} >Submit</button>
+          <Link to="/" className="btn btn-error">Cancel</Link>
+        </form>
+        <h5> Don't Have an account? <Link to="/register" className="btn btn-error">Sign Up!</Link> </h5>
+    </div>
+
     );
   }
 }
+
+export default SignInForm;
