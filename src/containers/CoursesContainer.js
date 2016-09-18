@@ -9,9 +9,9 @@ class CoursesContainer extends Component {
 
   handleClick(event) {
     event.preventDefault()
-    var course = event.target.dataset.course
-    debugger
-    this.props.changeActiveCourse(course)
+    var courseName = event.target.dataset.course
+    var activeCourse = this.props.activeRestaurant.restaurant.courses.find(course => course.name === courseName)
+    this.props.changeActiveCourse(activeCourse)
   }
 
   render() {

@@ -5,7 +5,7 @@ export default class RestaurantsList extends Component {
 
   render() {
     const { renderRestaurants, restaurantsList } = this.props;
-    if(restaurantsList.length > 0) {
+    if (restaurantsList.length > 0) {
       return (
         <div className="container" >
           <h1>Take Your Pick!</h1>
@@ -22,6 +22,5 @@ export default class RestaurantsList extends Component {
         </div>
       )
     }
-
   }
 }
