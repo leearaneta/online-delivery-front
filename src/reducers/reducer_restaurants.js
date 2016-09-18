@@ -23,7 +23,7 @@ export default function(state = INITIAL_STATE, action) {
       }
     case FETCH_RESTAURANT:
       return { ...state,
-        activeRestaurant: {restaurant: action.payload.data, activeCourse: null},
+        activeRestaurant: {restaurant: action.payload.data, activeCourse: {id: 5, name: 'featured'}},
         status: null,
         error: null,
         loading: false

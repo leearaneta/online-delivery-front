@@ -14,9 +14,10 @@ class CoursesContainer extends Component {
   }
 
   render() {
-    if (this.props.activeRestaurant.restaurant) {
+    var { restaurant } = this.props.activeRestaurant
+    if (restaurant) {
       return (
-        <div>{this.props.activeRestaurant.restaurant.courses.map(course => {
+        <div>{restaurant.courses.map(course => {
           return <Course {...course} onClick={this.handleClick.bind(this)} />
         })}</div>
       )

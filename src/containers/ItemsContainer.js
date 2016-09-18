@@ -20,10 +20,16 @@ class ItemsContainer extends Component {
 
   render() {
     var { restaurant, activeCourse } = this.props.activeRestaurant
-    if (activeCourse) {
-      var relevantItems = restaurant.items.filter(item => {
-        return item.course_id === activeCourse.id
-      })
+    if (restaurant) {
+      if (activeCourse.name === 'featured') {
+        var relevantItems = restaurant.items.filter(item => {
+          return item.featured === true
+        })
+      } else {
+        var relevantItems = restaurant.items.filter(item => { // omg refactor this
+          return item.course_id === activeCourse.id
+        })
+      }
       return <div>{relevantItems.map(item => <Item {...item} onClick={this.handleClick.bind(this)}/>)}</div>
     }
     return null
