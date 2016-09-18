@@ -1,17 +1,21 @@
 Front-End
-1. restaurants selection page
-	a.break it up into categories
-	b.on category select, restaurants populate
-	c.if results return > 30 restaurants, keep prompting for more filters
+
+1. category to restaurant page
+	a. if results return > 30 restaurants, keep prompting for more filters
 
 2. restaurant individual page/menu
-   a. menu categories on top 
-   b. menu items populate on click of category
-   c. featured items on load
+   a. seed DB with featured items to show on load
 
+3. severe styling
 
+4. user sign in/up on checkout
+
+5. checkout
+
+6. search that can autosuggest results based on the query
+	a. search on menu
+	b. search for restaurant
 
 Back-End
-0. modify category set up for restaurant/menu
 1. build database with real data
 2. set up authentication
