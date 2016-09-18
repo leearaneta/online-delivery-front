@@ -6,8 +6,7 @@ import Landing from './pages/Landing';
 import RestaurantsList from './pages/RestaurantsList';
 import Restaurant from './pages/Restaurant'
 import Categories from './pages/Categories'
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
+import Checkout from './pages/Checkout'
 
 export default (
   <Route path="/" component={App}>
@@ -15,7 +14,6 @@ export default (
     <Route path="/categories" component={Categories} />
     <Route path="/restaurants" component={RestaurantsList} />
     <Route path="/restaurants/:id" component={Restaurant} />
-    <Route path="/signin" component={SignIn} />
-    <Route path="/signup" component={SignUp} />
+    <Route path="/checkout" component={Checkout} />   
   </Route>
 );

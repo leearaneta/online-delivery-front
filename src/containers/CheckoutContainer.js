@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import RestaurantsList from '../components/RestaurantsList';
-import RestaurantBox from '../components/RestaurantBox';
+import Checkout from '../components/Checkout';
 
 const mapStateToProps = (state) => {
   return {
-    restaurantsList: state.restaurants.activeCategory.activeRestaurantsList
+    user: state.user,
+    cart: state.cart
+
   }
 }
 
@@ -15,7 +16,6 @@ const mapDispatchToProps = (dispatch) => {
     	return restaurants.map((restaurant) => {
 	      return (
 	        <li className="restaurant-box" key={restaurant.id}>
-	          <RestaurantBox {...restaurant} />
 	        </li>
 	      )
     	})
@@ -23,4 +23,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RestaurantsList);
+export default connect(mapStateToProps, null)(Checkout);
