@@ -151,7 +151,7 @@ h1 {
 }
 .geosuggest-item--active:hover,
 .geosuggest-item--active:focus {
-  background: #ccc; 
+  background: #ccc;
 }
 
 
@@ -204,3 +204,8 @@ h1 {
   cursor: pointer;
   border: 2px solid gray; 
 }
+
+.numberInput {
+  width: 40px
+}
+

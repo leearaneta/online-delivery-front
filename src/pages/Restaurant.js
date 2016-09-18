@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import CartContainer from '../containers/CartContainer'
 import CoursesContainer from '../containers/CoursesContainer';
 import ItemsContainer from '../containers/ItemsContainer'
 import { fetchRestaurant } from '../actions/restaurants'
@@ -15,6 +16,7 @@ class Restaurant extends Component {
   render() {
     return (
       <div>
+        <CartContainer />
         <CoursesContainer />
         <ItemsContainer />
       </div>
