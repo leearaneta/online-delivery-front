@@ -47,8 +47,7 @@ const signUp = (formValues, dispatch) => {
 
 function mapStateToProps(state, ownProps) {
   return { 
-    user: state.user,
-    validateFields: state.validateFields
+    user: state.user
   };
 }
 
