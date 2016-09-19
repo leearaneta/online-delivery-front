@@ -11,7 +11,7 @@ const HEADER = globalConfig.header
 
 export function validateUserFields(values) {
   const request = axios.post(`${ROOT_URL}/users/validate/fields`,
-    {user: values, HEADER});
+    {user: values});
 
   return {
     type: VALIDATE_USER_FIELDS,

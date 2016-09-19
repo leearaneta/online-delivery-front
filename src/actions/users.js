@@ -21,8 +21,6 @@ export const UPDATE_USER_ACCOUNT = 'UPDATE_USER_ACCOUNT';
 
 export const LOGOUT_USER = 'LOGOUT_USER';
 
-export const CHECK_DELIVERY_ZONE = 'CHECK_DELIVERY_ZONE'
-
 const ROOT_URL = globalConfig.API
 const HEADER = globalConfig.header
 

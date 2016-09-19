@@ -1,13 +1,14 @@
-import React, {PropTypes}from 'react';
+import React, {PropTypes} from 'react';
 import SignUpForm from '../components/SignUpForm.js';
 import {signUpUser, signUpUserSuccess, signUpUserFailure } from '../actions/users';
 import { validateUserFields, validateUserFieldsSuccess, validateUserFieldsFailure, resetValidateUserFields } from '../actions/validateUserFields';
 import { reduxForm } from 'redux-form'
 
+var errors;
 
 const validate = values => {
 
-  const errors = {}
+  errors = {}
   const requiredFields = [ 'first_name', 'last_name', 'email', 'password' ]
   requiredFields.forEach(field => {
     if (!values[ field ]) {
@@ -22,21 +23,13 @@ const validate = values => {
 }
 
 const asyncValidate = (values, dispatch) => {
-  return new Promise((resolve, reject) => {
-    dispatch(validateUserFields(values))
-    .then((response) => {
-        let data = response.payload.data;
-        if(response.payload.status !== 200) {
-          dispatch(validateUserFieldsFailure(response.payload.response.data.error));
-           reject(data); 
-         } else {
-          dispatch(validateUserFieldsSuccess(response.payload)); 
-          resolve();
-        }
-      });
-  });
-};
-
+  return dispatch(validateUserFields({email: values.email}))
+  .then((response) => {
+    if (response.payload.status !== 200) {
+      throw { email: 'Email already Exists' }
+    }
+  })
+}
 
 const validateAndSignUpUser = (formValues, dispatch) => {
   return new Promise((resolve, reject) => {
@@ -66,7 +59,8 @@ const mapDispatchToProps = (dispatch) => {
 
 function mapStateToProps(state, ownProps) {
   return { 
-    user: state.user
+    user: state.user,
+    validateFields: state.validateFields
   };
 }
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { Field } from 'redux-form'
 import MenuItem from 'material-ui/MenuItem'
 import { AutoComplete as MUIAutoComplete } from 'material-ui'
-import { TextField } from 'redux-form-material-ui'
+import { TextField,PasswordField } from 'redux-form-material-ui'
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
@@ -38,11 +38,11 @@ class SignUpForm extends Component {
           <Field name="email" component={TextField} hintText="Email" floatingLabelText="Email"/>
         </div>
         <div>
-          <Field name="password" component={TextField} hintText="Password" floatingLabelText="Password"/>
+          <Field name="password" component={TextField} type="password" hintText="Password" floatingLabelText="Password"/>
         </div>
         <div>
-          <button type="submit" disabled={pristine || submitting}>Sign Up</button>
-          <button type="button" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" disabled={pristine || submitting} onClick={reset}>Clear</button>
+          <button type="submit" className="mdl-button" disabled={pristine || submitting}>Sign Up</button>
+          <button type="button" className="mdl-button" disabled={pristine || submitting} onClick={reset}>Clear</button>
         </div> 
         <br />
         <div>
