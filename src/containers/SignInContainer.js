@@ -1,19 +1,17 @@
+import React, {PropTypes} from 'react';
 import SignInForm from '../components/SignInForm.js';
 import {signInUser, signInUserSuccess, signInUserFailure } from '../actions/users';
 import { reduxForm } from 'redux-form';
 
-function validate(values) {
-  var errors = {};
-  var hasErrors = false;
-  if (!values.email || values.email.trim() === '') {
-    errors.email = 'Enter email';
-    hasErrors = true;
-  }
-  if(!values.password || values.password.trim() === '') {
-    errors.password = 'Enter password';
-    hasErrors = true;
-  }
-   return hasErrors && errors;
+const validate = values => {
+  const errors = {}
+  const requiredFields = [ 'email', 'password' ]
+  requiredFields.forEach(field => {
+    if (!values[ field ]) {
+      errors[ field ] = 'Required'
+    }
+  })
+  return errors
 }
 
 const validateAndSignInUser = (values, dispatch) => {
@@ -44,6 +42,10 @@ function mapStateToProps(state, ownProps) {
     user: state.user
   };
 }
+
+SignInForm.childContextTypes = {
+    muiTheme: React.PropTypes.object.isRequired,
+};
 
 export default reduxForm({
   form: 'SignInForm',

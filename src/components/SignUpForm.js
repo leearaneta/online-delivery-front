@@ -1,13 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Field } from 'redux-form'
-import MenuItem from 'material-ui/MenuItem'
-import { AutoComplete as MUIAutoComplete } from 'material-ui'
-import { TextField,PasswordField } from 'redux-form-material-ui'
+import { TextField } from 'redux-form-material-ui'
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-class SignUpForm extends Component {
+export default class SignUpForm extends Component {
 
   getChildContext() {
       return { muiTheme: getMuiTheme(baseTheme) };
@@ -35,10 +33,12 @@ class SignUpForm extends Component {
             ref="last_name" />
         </div>
         <div>
-          <Field name="email" component={TextField} hintText="Email" floatingLabelText="Email"/>
+          <Field name="email" component={TextField} hintText="Email" 
+            floatingLabelText="Email" ref="email"/>
         </div>
         <div>
-          <Field name="password" component={TextField} type="password" hintText="Password" floatingLabelText="Password"/>
+          <Field name="password" component={TextField} type="password" 
+            hintText="Password" floatingLabelText="Password" ref="password"/>
         </div>
         <div>
           <button type="submit" className="mdl-button" disabled={pristine || submitting}>Sign Up</button>
@@ -52,5 +52,3 @@ class SignUpForm extends Component {
     );
   }
 }
-
-export default SignUpForm;

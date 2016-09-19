@@ -1,53 +1,46 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import { Field } from 'redux-form'
+import { TextField } from 'redux-form-material-ui'
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-class SignInForm extends Component {
-  static contextTypes = {
-    router: PropTypes.object
-  };
-
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.user.status === 'authenticated' && nextProps.user.user && !nextProps.user.error) {
-      this.context.router.push('/dashboard');
-    }
-
-    if(nextProps.user.status === 'signin' && !nextProps.user.user && nextProps.user.error && !this.props.user.error) {
-      alert(nextProps.user.error.message);
-    }
+export default class SignInForm extends Component {
+  getChildContext() {
+    return { muiTheme: getMuiTheme(baseTheme) };
   }
 
+  componentDidMount() {
+    this.refs.email
+      .getRenderedComponent()
+      .getRenderedComponent()
+      .focus()
+  }
+
+
   render() {
-    const {asyncValidating, fields: {email, password}, handleSubmit, submitting} = this.props;
+
+     const { handleSubmit, pristine, reset, submitting } = this.props
     return (
-      <div className="container">
-        <form onSubmit={handleSubmit(this.props.signInUser.bind(this))}>
-          <div className={`form-group ${email.touched && email.invalid ? 'has-error' : ''}`}>
-            <label className="control-label">Email</label>
-            <input  placeholder="email" type="text" className="form-control" {...email} />
-            <div className="help-block">
-              {email.touched ? email.error : ''}
-            </div>
-            <div className="help-block">
-            {asyncValidating === 'email' ? 'validating..': ''}
-            </div>
-          </div>
 
-
-          <div className={`form-group ${password.touched && password.invalid ? 'has-error' : ''}`}>
-            <label className="control-label">Password</label>
-            <input type="password" className="form-control" {...password} />
-            <div className="help-block">
-              {password.touched ? password.error : ''}
-            </div>
-          </div>
-          <button type="submit" className="btn btn-primary"  disabled={submitting} >Submit</button>
-          <Link to="/" className="btn btn-error">Cancel</Link>
-        </form>
-        <h5> Don't Have an account? <Link to="/register" className="btn btn-error">Sign Up!</Link> </h5>
-    </div>
-
+      <form onSubmit={handleSubmit}>
+        <div>
+          <Field name="email" component={TextField} hintText="Email" 
+            floatingLabelText="Email" ref="email"/>
+        </div>
+        <div>
+          <Field name="password" component={TextField} type="password" 
+            hintText="Password" floatingLabelText="Password" ref="password"/>
+        </div>
+        <div>
+          <button type="submit" className="mdl-button" disabled={pristine || submitting}>Sign Up</button>
+          <button type="button" className="mdl-button" disabled={pristine || submitting} onClick={reset}>Clear</button>
+        </div> 
+        <br />
+        <div>
+          <h5> Don't Have an account? <Link to="/register" className="btn btn-error">Sign Up!</Link> </h5>
+        </div>
+      </form>
     );
   }
 }
-
-export default SignInForm;

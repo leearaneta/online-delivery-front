@@ -4,11 +4,8 @@ import {signUpUser, signUpUserSuccess, signUpUserFailure } from '../actions/user
 import { validateUserFields, validateUserFieldsSuccess, validateUserFieldsFailure, resetValidateUserFields } from '../actions/validateUserFields';
 import { reduxForm } from 'redux-form'
 
-var errors;
-
 const validate = values => {
-
-  errors = {}
+  const errors = {}
   const requiredFields = [ 'first_name', 'last_name', 'email', 'password' ]
   requiredFields.forEach(field => {
     if (!values[ field ]) {
