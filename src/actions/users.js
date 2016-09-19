@@ -102,10 +102,10 @@ export function resetUser() {
 }
 
 export function signInUser(formValues) {
-  const {username, password} = formValues
+  debugger
   const request = axios.post(`${ROOT_URL}/signin`,
-    {user: {email: username, password: password}
-  });
+    {user: formValues}
+  );
 
   return {
     type: SIGNIN_USER,
