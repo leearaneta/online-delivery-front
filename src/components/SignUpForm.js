@@ -19,11 +19,10 @@ export default class SignUpForm extends Component {
   }
 
   render() {
-
-     const { asyncValidating, handleSubmit, pristine, reset, submitting } = this.props
+    const { signUp, asyncValidating, handleSubmit, pristine, reset, submitting } = this.props
     return (
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(signUp.bind(this))}>
         <div>
           <Field name="first_name" component={TextField} hintText="First Name" floatingLabelText="First Name"
             ref="first_name" withRef/>

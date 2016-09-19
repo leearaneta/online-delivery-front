@@ -28,7 +28,7 @@ const asyncValidate = (values, dispatch) => {
   })
 }
 
-const validateAndSignUpUser = (formValues, dispatch) => {
+const signUp = (formValues, dispatch) => {
   return new Promise((resolve, reject) => {
    dispatch(signUpUser(formValues))
     .then((response) => {
@@ -44,15 +44,6 @@ const validateAndSignUpUser = (formValues, dispatch) => {
       });
   });
 };
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-   signUpUser: validateAndSignUpUser,
-   resetMe: () =>{
-     dispatch(resetValidateUserFields());
-    }
-  }
-}
 
 function mapStateToProps(state, ownProps) {
   return { 
@@ -70,5 +61,6 @@ export default reduxForm({
   fields: ['first_name','last_name', 'email', 'password'], 
   asyncValidate,
   asyncBlurFields: ['email'],
-  validate 
-}, mapStateToProps, mapDispatchToProps)(SignUpForm);
+  validate,
+  signUp
+}, mapStateToProps, null)(SignUpForm);

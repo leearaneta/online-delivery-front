@@ -14,8 +14,9 @@ const validate = values => {
   return errors
 }
 
-const validateAndSignInUser = (values, dispatch) => {
+const signIn = (values, dispatch) => {
   return new Promise((resolve, reject) => {
+    debugger
    dispatch(signInUser(values))
     .then((response) => {
         let data = response.payload.data;
@@ -30,12 +31,6 @@ const validateAndSignInUser = (values, dispatch) => {
       });
   });
 };
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-   signInUser: validateAndSignInUser
-  }
-}
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -52,5 +47,6 @@ export default reduxForm({
   fields: ['email', 'password'],
   null,
   null,
-  validate
-}, mapStateToProps, mapDispatchToProps)(SignInForm);
+  validate,
+  signIn
+}, mapStateToProps, null)(SignInForm);

@@ -19,14 +19,14 @@ export default class SignInForm extends Component {
 
 
   render() {
-
-     const { handleSubmit, pristine, reset, submitting } = this.props
+    const { signIn, handleSubmit, pristine, reset, submitting } = this.props
+    
     return (
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(signIn.bind(this))}>
         <div>
           <Field name="email" component={TextField} hintText="Email" 
-            floatingLabelText="Email" ref="email"/>
+            floatingLabelText="Email" ref="email" withRef/>
         </div>
         <div>
           <Field name="password" component={TextField} type="password" 
