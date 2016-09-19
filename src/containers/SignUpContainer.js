@@ -1,31 +1,25 @@
+import React, {PropTypes}from 'react';
 import SignUpForm from '../components/SignUpForm.js';
 import {signUpUser, signUpUserSuccess, signUpUserFailure } from '../actions/users';
 import { validateUserFields, validateUserFieldsSuccess, validateUserFieldsFailure, resetValidateUserFields } from '../actions/validateUserFields';
+import { reduxForm } from 'redux-form'
 
-import { reduxForm } from 'redux-form';
 
-function validate(values) {
-  var errors = {};
-  var hasErrors = false;
+const validate = values => {
 
-  if (!values.first_name || values.first_name.trim() === '') {
-    errors.first_name = 'Enter your first name!';
-    hasErrors = true;
+  const errors = {}
+  const requiredFields = [ 'first_name', 'last_name', 'email', 'password' ]
+  requiredFields.forEach(field => {
+    if (!values[ field ]) {
+      errors[ field ] = 'Required'
+    }
+  })
+
+  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address'
   }
-  if (!values.last_name || values.name.trim() === '') {
-    errors.last_name = 'Enter your last name!';
-    hasErrors = true;
-  }
-  if(!values.email || values.email.trim() === '') {
-    errors.email = 'Enter your email!';
-    hasErrors = true;
-  }
-  if(!values.password || values.password.trim() === '') {
-    errors.password = 'Enter password';
-    hasErrors = true;
-  }
-   return hasErrors && errors;
-} 
+  return errors
+}
 
 const asyncValidate = (values, dispatch) => {
   return new Promise((resolve, reject) => {
@@ -72,10 +66,13 @@ const mapDispatchToProps = (dispatch) => {
 
 function mapStateToProps(state, ownProps) {
   return { 
-    user: state.user,
-    validateFields: state.validateFields
+    user: state.user
   };
 }
+
+SignUpForm.childContextTypes = {
+    muiTheme: React.PropTypes.object.isRequired,
+};
 
 export default reduxForm({
   form: 'SignUpForm', 
