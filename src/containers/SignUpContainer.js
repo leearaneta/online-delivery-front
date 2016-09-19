@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import SignUpForm from '../components/SignUpForm.js';
 import {signUpUser, signUpUserSuccess, signUpUserFailure } from '../actions/users';
 import { validateEmail } from '../actions/users';

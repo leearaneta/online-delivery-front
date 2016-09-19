@@ -10,7 +10,7 @@ import { Link } from 'react-router'
 class Restaurant extends Component {
 
   componentWillMount() {
-    var {params, fetchRestaurant, changeActiveCourse} = this.props
+    var {params, fetchRestaurant} = this.props
     fetchRestaurant(params.id)
   }
 

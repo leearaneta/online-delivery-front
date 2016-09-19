@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import SignInForm from '../components/SignInForm.js';
 import {signInUser, signInUserSuccess, signInUserFailure } from '../actions/users';
 import { reduxForm } from 'redux-form';

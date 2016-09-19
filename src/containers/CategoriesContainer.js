@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
-import { Link, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import Category from '../components/Course'
 import { changeActiveCategory } from '../actions/restaurants'
 import _ from 'lodash'

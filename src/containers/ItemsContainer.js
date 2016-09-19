@@ -19,14 +19,16 @@ class ItemsContainer extends Component {
   }
 
   render() {
-    var { restaurant, activeCourse } = this.props.activeRestaurant
+    const { restaurant, activeCourse } = this.props.activeRestaurant
+    var relevantItems
+    
     if (restaurant) {
       if (activeCourse.name === 'featured') {
-        var relevantItems = restaurant.items.filter(item => {
+        relevantItems = restaurant.items.filter(item => {
           return item.featured === true
         })
       } else {
-        var relevantItems = restaurant.items.filter(item => { // omg refactor this
+        relevantItems = restaurant.items.filter(item => { // omg refactor this
           return item.course_id === activeCourse.id
         })
       }

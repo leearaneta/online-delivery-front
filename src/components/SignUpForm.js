@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Field } from 'redux-form'
 import { TextField } from 'redux-form-material-ui'
@@ -19,7 +19,7 @@ export default class SignUpForm extends Component {
   }
 
   render() {
-    const { signUp, asyncValidating, handleSubmit, pristine, reset, submitting } = this.props
+    const { signUp, handleSubmit, pristine, reset, submitting } = this.props
     return (
 
       <form onSubmit={handleSubmit(signUp.bind(this))}>
