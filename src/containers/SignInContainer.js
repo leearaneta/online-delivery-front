@@ -16,7 +16,6 @@ const validate = values => {
 
 const signIn = (values, dispatch) => {
   return new Promise((resolve, reject) => {
-    debugger
    dispatch(signInUser(values))
     .then((response) => {
         let data = response.payload.data;
