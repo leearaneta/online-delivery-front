@@ -21,8 +21,20 @@ export const UPDATE_USER_ACCOUNT = 'UPDATE_USER_ACCOUNT';
 
 export const LOGOUT_USER = 'LOGOUT_USER';
 
+export const VALIDATE_EMAIL = 'VALIDATE_EMAIL';
+
 const ROOT_URL = globalConfig.API
 const HEADER = globalConfig.header
+
+export function validateEmail(values) {
+  const request = axios.post(`${ROOT_URL}/users/validate/fields`,
+    {user: values});
+
+  return {
+    type: VALIDATE_EMAIL,
+    payload: request
+  };
+}
 
 export function getUserData(userId){
   const request = axios.get(`${ROOT_URL}/users/${userId}`,HEADER)

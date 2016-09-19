@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { browserHistory, Link } from 'react-router';
+import React, { Component } from 'react'
+import { browserHistory, Link } from 'react-router'
 
 export default class Checkout extends Component {
 

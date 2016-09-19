@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import SignUpForm from '../components/SignUpForm.js';
 import {signUpUser, signUpUserSuccess, signUpUserFailure } from '../actions/users';
-import { validateUserFields, validateUserFieldsSuccess, validateUserFieldsFailure, resetValidateUserFields } from '../actions/validateUserFields';
+import { validateEmail } from '../actions/users';
 import { reduxForm } from 'redux-form'
 
 const validate = values => {
@@ -20,7 +20,7 @@ const validate = values => {
 }
 
 const asyncValidate = (values, dispatch) => {
-  return dispatch(validateUserFields({email: values.email}))
+  return dispatch(validateEmail({email: values.email}))
   .then((response) => {
     if (response.payload.status !== 200) {
       throw { email: 'Email already Exists' }
